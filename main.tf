@@ -14,7 +14,7 @@ data "azurerm_resource_group" "existing" {
 
 # Create your other resources within the existing resource group, using the "existing" data block
 resource "azurerm_virtual_network" "VNet" {
-  name                = SampleVNet
+  name                = "SampleVNet"
   address_space       = ["10.0.0.0/16"]
   location            = data.azurerm_resource_group.existing.location
   resource_group_name = data.azurerm_resource_group.existing.name
@@ -22,14 +22,14 @@ resource "azurerm_virtual_network" "VNet" {
 
 # Create other resources using the data block as a reference
 resource "azurerm_subnet" "Subnet" {
-  name                 = SampleSubnet
+  name                 = "SampleSubnet"
   resource_group_name  = data.azurerm_resource_group.existing.name
   virtual_network_name = azurerm_virtual_network.VNet.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
 resource "azurerm_network_security_group" "NSG" {
-  name                = SampleNSG
+  name                = "SampleNSGR"
   location            = data.azurerm_resource_group.existing.location
   resource_group_name = data.azurerm_resource_group.existing.name
 }
@@ -64,7 +64,7 @@ resource "azurerm_network_interface" "NI" {
 
 # Create a Windows virtual machine
 resource "azurerm_virtual_machine" "VM" {
-  name                  = SampleVM
+  name                  = "SampleVM"
   location              = data.azurerm_resource_group.existing.location
   resource_group_name   = data.azurerm_resource_group.existing.name
   network_interface_ids = [azurerm_network_interface.NI.id]
