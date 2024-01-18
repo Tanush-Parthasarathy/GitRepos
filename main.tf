@@ -70,7 +70,6 @@ resource "azurerm_virtual_machine" "VM" {
   network_interface_ids = [azurerm_network_interface.NI.id]
   vm_size               = "Standard_DS2_v2"
   
-
   storage_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
@@ -88,7 +87,8 @@ resource "azurerm_virtual_machine" "VM" {
   os_profile {
     computer_name  = "Test"
     admin_username = "adminuser"
-    admin_password = "Passw@rd123" 
+    admin_password = "Passw@rd123"
+  }
 
   os_profile_windows_config {
     enable_automatic_upgrades = true
@@ -97,5 +97,4 @@ resource "azurerm_virtual_machine" "VM" {
   tags = {
     environment = "testing"
   }
-}
 }
