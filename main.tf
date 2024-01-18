@@ -71,7 +71,7 @@ resource "azurerm_virtual_machine" "VM" {
   vm_size               = "Standard_DS2_v2"
   }
 
-  storage_image_reference {
+storage_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
     sku       = "2019-Datacenter"
