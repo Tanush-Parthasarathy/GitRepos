@@ -51,7 +51,7 @@ resource "azurerm_network_security_rule" "NSR" {
 
 # Create a network interface for the Windows VM
 resource "azurerm_network_interface" "NI" {
-  name                = SampleNI
+  name                = "SampleNI"
   location            = data.azurerm_resource_group.existing.location
   resource_group_name = data.azurerm_resource_group.existing.name
 
